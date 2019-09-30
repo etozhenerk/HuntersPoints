@@ -33,6 +33,4 @@ function getPoints(response) {
       }
     });
   });
-  console.log(huntersMember);
-  console.log(huntersPoints);
 }
