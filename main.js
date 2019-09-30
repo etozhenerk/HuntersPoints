@@ -32,8 +32,6 @@ function getPoints(response) {
         poinsCount.textContent = huntersPoints[i];
       }
     });
-
-    inputName = "";
   });
   console.log(huntersMember);
   console.log(huntersPoints);
