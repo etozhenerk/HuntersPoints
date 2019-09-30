@@ -22,13 +22,18 @@ function getPoints(response) {
   form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const inputName = document.querySelector("#hunt-search").value;
+    let inputName = document.querySelector("#hunt-search").value;
+    huntName.textContent = "Вы ввели неверное имя";
+    poinsCount.textContent = "0";
+
     huntersMember.forEach((member, i) =>{
       if(inputName === member){
         huntName.textContent = inputName;
         poinsCount.textContent = huntersPoints[i];
       }
     });
+
+    inputName = "";
   });
   console.log(huntersMember);
   console.log(huntersPoints);
