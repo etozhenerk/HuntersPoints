@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    .header {
+      padding-top: 40px;
+    }
+  </style>
+  <title>Счетчик подписчиков Youtube-канала!</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Таблица поинтов Hunters!</h1>
+
+      <div class="row">
+        <div class="col-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" id="hunt-name">Ник игрока</h5>
+              <p class="card-text">У вас <span id="points-count">0</span> поинтов</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <form class="form-inline" id="form" action="#">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="hunt-search" class="sr-only">Ваш точный ник</label>
+              <input type="text" autocomplete="off"  class="form-control" id="hunt-search" placeholder="Ваш точный ник">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Поиск</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script src="./main.js"></script>
+  <!-- 
+AIzaSyB7pT0HMSiGxTzmU8gI5kR3XRTAbqt55k0
+ -->
+</body>
+
+</html>
