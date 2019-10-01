@@ -10,7 +10,9 @@ function getPoints(response) {
     poinsCount = document.querySelector("#points-count"),
     huntClass = document.querySelector("#hunt-class"),
     form = document.querySelector("#form"),
-    classIcon = document.querySelector(".hunters-card__img");
+    classIcon = document.querySelector(".hunters-card__img"),
+    advice = document.querySelector(".hunters-advice"),
+    adviceText = document.querySelector(".hunters-advice__descr");
 
   const huntersList = response.values;
   const huntersMember = [];
@@ -48,24 +50,70 @@ function getPoints(response) {
     poinsCount.textContent = "0";
     huntClass.textContent = "Класс игрока";
     classIcon.src = icons["воин"];
+    advice.style.display = "none";
+    advice.classList.remove("green");
+    advice.classList.remove("yellow");
+    advice.classList.remove("orange");
+    advice.classList.remove("red");
+    adviceText.innerHTML = "";
 
     animateCSS(huntName, "fadeInLeft");
     animateCSS(classIcon, "flip");
     animateCSS(poinsCount, "fadeInRight");
 
     huntersMember.forEach((member, i) => {
+      let index = member.indexOf(inputName);
       if (
-        inputName.toLowerCase() === member.toLowerCase() &&
+        index >= 0 &&
         inputName !== ""
       ) {
+        
         huntName.textContent = huntersPoints[i][0];
-        huntClass.textContent = huntersPoints[i][1];
-        classIcon.src = icons[huntersPoints[i][1]];
+        huntClass.textContent = huntersPoints[i][1][0].toUpperCase() + huntersPoints[i][1].slice(1);
+        classIcon.src = icons[huntersPoints[i][1].replace(/\s/g, '')];
         poinsCount.textContent = huntersPoints[i][2];
-      }
+
+        let number = Number(huntersPoints[i][2].replace(/\s/g, ''));
+        if(number >= 20000){
+          advice.style.display = "block";
+          advice.classList.remove("yellow");
+          advice.classList.remove("orange");
+          advice.classList.remove("red");
+          advice.classList.add("green");
+          animateCSS(advice, "fadeInDown");
+          adviceText.innerHTML = "У вас много поинтов!<br> Пора их потратить на <a href ='#'>аукционе</a> или в <a href ='#'>магазине</a>!";
+        }else if(number >= 0){
+          advice.style.display = "block";
+          advice.classList.remove("red");
+          advice.classList.remove("orange");
+          advice.classList.remove("green");
+          advice.classList.add("yellow");
+          let debt = -2000 * number;
+          animateCSS(advice, "fadeInDown");
+          adviceText.innerHTML = `C вашей посещаемостью всё хорошо!`;
+        }else if(number <= -5000){
+          advice.style.display = "block";
+          advice.classList.remove("yellow");
+          advice.classList.remove("orange");
+          advice.classList.remove("green");
+          advice.classList.add("red");
+          animateCSS(advice, "fadeInDown");
+          let debt = -2000 * number;
+          adviceText.innerHTML = `Вы на грани кика из клана! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')} юаней`;
+        }else if(number <= 0){
+          advice.style.display = "block";
+          advice.classList.remove("yellow");
+          advice.classList.remove("green");
+          advice.classList.remove("red");
+          advice.classList.add("orange");
+          animateCSS(advice, "fadeInDown");
+          let debt = -2000 * number;
+          adviceText.innerHTML = `Необходимо поднять посещаемость! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')} юаней`;
+        }
+      } 
     });
   });
-  huntName.classList.remove("animated", "fadeInLeft");
+
 }
 
 function animateCSS(element, animationName, callback) {
