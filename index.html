@@ -17,27 +17,30 @@
   <main class="main">
     <div class="container">
       <div class="hunters wow fadeInDown">
-        <h1 class="hunters-title">Таблица поинтов Hunters!</h1>
+        <h1 class="hunters-title">Таблица поинтов Hunters</h1>
         <div class="row ">
           <div class="col-12">
             <form class="hunters-form" id="form" action="#">
               <input class="hunters-form__input" type="text" autocomplete="off" id="hunt-search"
-                placeholder="Ваш точный ник">
+                placeholder="Ваш точный ник*">
               <button class="hunters-form__btn" type="submit"><i class="fas fa-search"></i></button>
             </form>
           </div>
           <div class="col-12">
             <div class="hunters-card">
               <div class="hunters-card__text">
-                <p class="hunters-card__name wow fadeInLeft" id="hunt-name">Ник игрока</p>
+                <p class="hunters-card__name wow" id="hunt-name">Ник игрока</p>
                 <p class="hunters-card__class"><img class="hunters-card__img" src="./img/class/0.png" alt=""><span id="hunt-class">Класс игрока</span></p>
               </div>
               <div class="hunters-card__points">
-                  <p>Ваши поинты :</p>
+                  <p class="hunters-card__points-descr">Ваши поинты :</p>
                   <p id="points-count">0</p>
               </div>
             </div>
           </div>
+        </div>
+        <div class="hunters-descr">
+          *регистр букв не важен, но поиск чувствителен к языку.
         </div>
       </div>
     </div>

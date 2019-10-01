@@ -17,31 +17,28 @@ function getPoints(response) {
   const huntersPoints = [];
 
   const icons = {
-    "воин": "./img/class/0.png",
-    "маг": "./img/class/1.png",
-    "шаман": "./img/class/2.png",
-    "друид": "./img/class/3.png",
-    "оборотень": "./img/class/4.png",
-    "убийца": "./img/class/5.png",
-    "лучник": "./img/class/6.png",
-    "жрец": "./img/class/7.png",
-    "страж": "./img/class/8.png",
-    "мистик": "./img/class/9.png",
-    "призрак": "./img/class/10.png",
-    "жнец": "./img/class/11.png",
-    "стрелок": "./img/class/12.png",
-    "паладин": "./img/class/13.png",
-    
+    воин: "./img/class/0.png",
+    маг: "./img/class/1.png",
+    шаман: "./img/class/2.png",
+    друид: "./img/class/3.png",
+    оборотень: "./img/class/4.png",
+    убийца: "./img/class/5.png",
+    лучник: "./img/class/6.png",
+    жрец: "./img/class/7.png",
+    страж: "./img/class/8.png",
+    мистик: "./img/class/9.png",
+    призрак: "./img/class/10.png",
+    жнец: "./img/class/11.png",
+    стрелок: "./img/class/12.png",
+    паладин: "./img/class/13.png"
   };
 
   huntersList.forEach((item, i) => {
-    if(i > 1 && i < 211){
+    if (i > 1 && i < 211) {
       huntersMember.push(item[0]);
-      huntersPoints.push([item[0],item[1], item[6]]);
+      huntersPoints.push([item[0], item[1], item[6]]);
     }
   });
-
-
 
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -52,14 +49,35 @@ function getPoints(response) {
     huntClass.textContent = "Класс игрока";
     classIcon.src = icons["воин"];
 
+    animateCSS(huntName, "fadeInLeft");
+    animateCSS(classIcon, "flip");
+    animateCSS(poinsCount, "fadeInRight");
+
     huntersMember.forEach((member, i) => {
-      if (inputName.toLowerCase() === member.toLowerCase()&& inputName !== "") {
+      if (
+        inputName.toLowerCase() === member.toLowerCase() &&
+        inputName !== ""
+      ) {
         huntName.textContent = huntersPoints[i][0];
         huntClass.textContent = huntersPoints[i][1];
         classIcon.src = icons[huntersPoints[i][1]];
         poinsCount.textContent = huntersPoints[i][2];
-        
       }
     });
   });
+  huntName.classList.remove("animated", "fadeInLeft");
+}
+
+function animateCSS(element, animationName, callback) {
+  const node = element;
+  node.classList.add("animated", animationName);
+
+  function handleAnimationEnd() {
+    node.classList.remove("animated", animationName);
+    node.removeEventListener("animationend", handleAnimationEnd);
+
+    if (typeof callback === "function") callback();
+  }
+
+  node.addEventListener("animationend", handleAnimationEnd);
 }
