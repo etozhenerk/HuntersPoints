@@ -4,7 +4,8 @@ body
 *
   box-sizing: border-box
 .main
-  padding-top: 10%
+  display: flex
+  align-items: center
   text-align: center
   height: 100vh
   background: url('../img/bg.jpg') center / cover no-repeat
@@ -38,9 +39,13 @@ body
     align-items: center
     &__name
       font-size: 18px
+      font-weight: 700
     &__class
       text-transform: uppercase
-      font-weight: 700
+      font-weight: 400
+    &__img
+      vertical-align: middle
+      margin-right: 10px
     &__points
       font-weight: 700
 

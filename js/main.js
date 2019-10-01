@@ -9,11 +9,30 @@ function getPoints(response) {
   const huntName = document.querySelector("#hunt-name"),
     poinsCount = document.querySelector("#points-count"),
     huntClass = document.querySelector("#hunt-class"),
-    form = document.querySelector("#form");
+    form = document.querySelector("#form"),
+    classIcon = document.querySelector(".hunters-card__img");
 
   const huntersList = response.values;
   const huntersMember = [];
   const huntersPoints = [];
+
+  const icons = {
+    "воин": "./img/class/0.png",
+    "маг": "./img/class/1.png",
+    "шаман": "./img/class/2.png",
+    "друид": "./img/class/3.png",
+    "оборотень": "./img/class/4.png",
+    "убийца": "./img/class/5.png",
+    "лучник": "./img/class/6.png",
+    "жрец": "./img/class/7.png",
+    "страж": "./img/class/8.png",
+    "мистик": "./img/class/9.png",
+    "призрак": "./img/class/10.png",
+    "жнец": "./img/class/11.png",
+    "стрелок": "./img/class/12.png",
+    "паладин": "./img/class/13.png",
+    
+  };
 
   huntersList.forEach((item, i) => {
     if(i > 1 && i < 211){
@@ -36,6 +55,7 @@ function getPoints(response) {
       if (inputName.toLowerCase() === member.toLowerCase()&& inputName !== "") {
         huntName.textContent = huntersPoints[i][0];
         huntClass.textContent = huntersPoints[i][1];
+        classIcon.src = icons[huntersPoints[i][1]];
         poinsCount.textContent = huntersPoints[i][2];
         
       }
