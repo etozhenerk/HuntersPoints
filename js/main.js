@@ -99,7 +99,7 @@ function getPoints(response) {
           advice.classList.add("red");
           animateCSS(advice, "fadeInDown");
           let debt = -2000 * number;
-          adviceText.innerHTML = `Вы на грани кика из клана! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')}&nbsp;юаней.<br> Задолженность нужно погасить в самое ближайшее время,<br> деньги выслать на ник kisk@`;
+          adviceText.innerHTML = `Вы на грани кика из клана! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')}&nbsp;юаней.<br> Задолженность нужно погасить в&nbsp;самое ближайшее время,<br> деньги выслать на ник kisk@`;
         }else if(number <= 0){
           advice.style.display = "block";
           advice.classList.remove("yellow");
