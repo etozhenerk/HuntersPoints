@@ -74,7 +74,7 @@ function getPoints(response) {
         poinsCount.textContent = huntersPoints[i][2];
 
         let number = Number(huntersPoints[i][2].replace(/\s/g, ''));
-        if(number >= 20000){
+        if(number >= 10000){
           advice.style.display = "block";
           advice.classList.remove("yellow");
           advice.classList.remove("orange");
@@ -91,7 +91,7 @@ function getPoints(response) {
           let debt = -2000 * number;
           animateCSS(advice, "fadeInDown");
           adviceText.innerHTML = `C вашей посещаемостью всё хорошо!`;
-        }else if(number <= -5000){
+        }else if(number <= -3000){
           advice.style.display = "block";
           advice.classList.remove("yellow");
           advice.classList.remove("orange");
@@ -100,7 +100,7 @@ function getPoints(response) {
           animateCSS(advice, "fadeInDown");
           let debt = -2000 * number;
           adviceText.innerHTML = `Вы на грани кика из клана! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')}&nbsp;юаней.<br> Задолженность нужно погасить в&nbsp;самое ближайшее время,<br> деньги выслать на ник kisk@`;
-        }else if(number <= 0){
+        }else if(number < 0){
           advice.style.display = "block";
           advice.classList.remove("yellow");
           advice.classList.remove("green");
@@ -108,7 +108,7 @@ function getPoints(response) {
           advice.classList.add("orange");
           animateCSS(advice, "fadeInDown");
           let debt = -2000 * number;
-          adviceText.innerHTML = `Необходимо поднять посещаемость! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')} юаней`;
+          adviceText.innerHTML = `Необходимо поднять посещаемость! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')}&nbsp;юаней.<br> Задолженность нужно погасить в&nbsp;самое ближайшее время,<br> деньги выслать на ник kisk@`;
         }
       } 
     });
