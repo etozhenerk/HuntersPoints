@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="./css/animate.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Поинты Hunters</title>
+</head>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <div class="hunters wow fadeInDown">
+        <h1 class="hunters-title">Таблица поинтов Hunters!</h1>
+        <div class="row ">
+          <div class="col-12">
+            <form class="hunters-form" id="form" action="#">
+              <input class="hunters-form__input" type="text" autocomplete="off" id="hunt-search"
+                placeholder="Ваш точный ник">
+              <button class="hunters-form__btn" type="submit">Поиск</button>
+            </form>
+          </div>
+          <div class="col-12">
+            <div class="hunters-card">
+              <div class="hunters-card__text">
+                <h5 class="hunters-card__name wow fadeInLeft" id="hunt-name">Ник игрока</h5>
+                <p class="hunters-card__class" id="hunt-class">Класс игрока</p>
+              </div>
+              <p class="hunters-card__points">Ваши поинты : <span id="points-count">0</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./js/wow.min.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+</body>
+
+</html>
