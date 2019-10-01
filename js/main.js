@@ -8,15 +8,18 @@ fetch(
 function getPoints(response) {
   const huntName = document.querySelector("#hunt-name"),
     poinsCount = document.querySelector("#points-count"),
+    huntClass = document.querySelector("#hunt-class"),
     form = document.querySelector("#form");
 
   const huntersList = response.values;
   const huntersMember = [];
   const huntersPoints = [];
 
-  huntersList.forEach(item => {
-    huntersMember.push(item[0]);
-    huntersPoints.push(item[6]);
+  huntersList.forEach((item, i) => {
+    if(i > 1 && i < 211){
+      huntersMember.push(item[0]);
+      huntersPoints.push([item[0],item[1], item[6]]);
+    }
   });
 
   form.addEventListener("submit", e => {
@@ -25,11 +28,13 @@ function getPoints(response) {
     let inputName = document.querySelector("#hunt-search").value;
     huntName.textContent = "Вы ввели неверное имя";
     poinsCount.textContent = "0";
+    huntClass.textContent = "";
 
-    huntersMember.forEach((member, i) =>{
-      if(inputName === member){
-        huntName.textContent = inputName;
-        poinsCount.textContent = huntersPoints[i];
+    huntersMember.forEach((member, i) => {
+      if (inputName.toLowerCase() === member.toLowerCase()&& inputName !== "") {
+        huntName.textContent = huntersPoints[i][0];
+        huntClass.textContent = huntersPoints[i][1];
+        poinsCount.textContent = huntersPoints[i][2];
       }
     });
   });
