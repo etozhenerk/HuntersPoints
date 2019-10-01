@@ -81,7 +81,7 @@ function getPoints(response) {
           advice.classList.remove("red");
           advice.classList.add("green");
           animateCSS(advice, "fadeInDown");
-          adviceText.innerHTML = "У вас много поинтов!<br> Пора их потратить на <a href ='#'>аукционе</a> или в <a href ='#'>магазине</a>!";
+          adviceText.innerHTML = "У вас много поинтов!<br> Пора их потратить на <a href ='https://hunters.sx/index.php?/forum/59-%D0%BA%D0%BB%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F-%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%86%D0%B8%D1%8F/' target='_blank'>аукционе</a> или в <a href ='https://hunters.sx/index.php?/forum/522-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD-%D0%B3%D0%B8%D0%BB%D1%8C%D0%B4%D0%B8%D0%B8/' target='_blank'>магазине</a>!";
         }else if(number >= 0){
           advice.style.display = "block";
           advice.classList.remove("red");
@@ -99,7 +99,7 @@ function getPoints(response) {
           advice.classList.add("red");
           animateCSS(advice, "fadeInDown");
           let debt = -2000 * number;
-          adviceText.innerHTML = `Вы на грани кика из клана! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')} юаней`;
+          adviceText.innerHTML = `Вы на грани кика из клана! <br> Ваша зажолжность составляет ${debt.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')}&nbsp;юаней.<br> Задолженность нужно погасить в самое ближайшее время,<br> деньги выслать на ник kisk@`;
         }else if(number <= 0){
           advice.style.display = "block";
           advice.classList.remove("yellow");
