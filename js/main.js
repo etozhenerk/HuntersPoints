@@ -49,7 +49,8 @@ function getPoints(response) {
     let inputName = document.querySelector("#hunt-search").value;
     huntName.textContent = "Вы ввели неверное имя";
     poinsCount.textContent = "0";
-    huntClass.textContent = "";
+    huntClass.textContent = "Класс игрока";
+    classIcon.src = icons["воин"];
 
     huntersMember.forEach((member, i) => {
       if (inputName.toLowerCase() === member.toLowerCase()&& inputName !== "") {
