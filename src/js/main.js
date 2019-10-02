@@ -36,15 +36,17 @@ function getPoints(response) {
   };
 
   huntersList.forEach((item, i) => {
-    if (i > 1 && i < 211) {
+    if (i > 1 && i < 211 && item.length !== 0) {
       huntersPoints.push([item[0], item[1], item[6]]);
     }
   });
 
+  console.log(huntersPoints);
+
   form.addEventListener("submit", e => {
     e.preventDefault();
 
-    let inputName = document.querySelector("#hunt-search").value;
+    let inputName = document.querySelector("#hunt-search").value.replace(/\s/g, "");
     huntName.textContent = "Вы ввели неверное имя";
     poinsCount.textContent = "0";
     huntClass.textContent = "Класс персонажа";
@@ -60,7 +62,7 @@ function getPoints(response) {
     animateCSS(poinsCount, "fadeInRight");
 
     huntersPoints.forEach((member, i) => {
-      let index = member[0].indexOf(inputName.replace(/\s/g, ""));
+      let index = member[0].indexOf(inputName);
       if (index >= 0 && inputName !== "") {
         huntName.textContent = member[0];
         huntClass.textContent =
