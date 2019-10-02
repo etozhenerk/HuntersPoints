@@ -8,12 +8,12 @@ fetch(
 function getPoints(response) {
   const huntName = document.querySelector("#hunt-name"),
     poinsCount = document.querySelector("#points-count"),
-    huntClass = document.querySelector("#hunt-class"),
     form = document.querySelector("#form"),
     classIcon = document.querySelector(".hunters-card__img"),
     advice = document.querySelector(".hunters-advice"),
     adviceText = document.querySelector(".hunters-advice__descr"),
-    debtors = document.querySelector(".debtors-list");
+    debtors = document.querySelector(".debtors-list"),
+    card = document.querySelector(".hunters-card__info");
 
   const huntersList = response.values;
   const huntersPoints = [];
@@ -55,8 +55,9 @@ function getPoints(response) {
       }
     });
     if (member !== undefined) {
+      card.style.display = "";
+      animateCSS(card, "fadeInDown");
       huntName.textContent = member[0];
-      huntClass.textContent = member[1][0].toUpperCase() + member[1].slice(1);
       classIcon.src = icons[member[1].replace(/\s/g, "")];
       poinsCount.textContent = member[2];
 
@@ -66,7 +67,7 @@ function getPoints(response) {
         advice.classList.remove("yellow");
         advice.classList.remove("red");
         advice.classList.add("green");
-        animateCSS(advice, "fadeInDown");
+        animateCSS(advice, "fadeInUp");
         adviceText.innerHTML =
           "У вас много поинтов!<br> Пора их потратить на <a href ='https://hunters.sx/index.php?/forum/59-%D0%BA%D0%BB%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F-%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%86%D0%B8%D1%8F/' target='_blank'>аукционе</a> или в <a href ='https://hunters.sx/index.php?/forum/522-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD-%D0%B3%D0%B8%D0%BB%D1%8C%D0%B4%D0%B8%D0%B8/' target='_blank'>магазине</a>!";
       } else if (number > 0) {
@@ -74,17 +75,17 @@ function getPoints(response) {
         advice.classList.remove("red");
         advice.classList.remove("green");
         advice.classList.add("yellow");
-        animateCSS(advice, "fadeInDown");
+        animateCSS(advice, "fadeInUp");
         adviceText.innerHTML = `C вашей посещаемостью всё хорошо!`;
       } else if (number <= 0) {
         advice.style.display = "block";
         advice.classList.remove("yellow");
         advice.classList.remove("green");
         advice.classList.add("red");
-        animateCSS(advice, "fadeInDown");
+        animateCSS(advice, "fadeInUp");
         let debt = -2000 * number;
         adviceText.innerHTML = `Необходимо поднять посещаемость!`;
-        if (number < -1) {
+        if (number <= -1) {
           adviceText.innerHTML = `Необходимо поднять посещаемость! <br> Ваша зажолжность составляет ${debt
             .toString()
             .replace(
@@ -94,18 +95,15 @@ function getPoints(response) {
         }
       }
     } else {
-      huntName.textContent = "Вы ввели неверное имя";
-      poinsCount.textContent = "0";
-      huntClass.textContent = "Класс персонажа";
-      classIcon.src = icons["воин"];
-      advice.style.display = "none";
-      advice.classList.remove("green");
-      advice.classList.remove("yellow");
-      advice.classList.remove("red");
-      adviceText.innerHTML = "";
+      card.style.display = "none";
+      advice.style.display = "block";
+        advice.classList.remove("yellow");
+        advice.classList.remove("green");
+        advice.classList.add("red");
+        animateCSS(advice, "fadeInUp");
+        adviceText.innerHTML = `Вы ввели неверный ник`;
     }
 
-    
     animateCSS(huntName, "fadeInLeft");
     animateCSS(classIcon, "flip");
     animateCSS(poinsCount, "fadeInRight");
@@ -132,9 +130,11 @@ function getPoints(response) {
               .toString()
               .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ")} юаней</div>
             `;
-      debtors.appendChild(card);
+
       card.setAttribute("data-wow-delay", `${d}s`);
       d += 0.1;
+
+      debtors.appendChild(card);
     }
   });
 }

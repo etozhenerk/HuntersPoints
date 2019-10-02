@@ -18,11 +18,15 @@ p,h1,h2,h3,h4,h5,h6
   display: flex
   align-items: center
 .hunters
+  width: 80%
+  margin: 0 auto
   text-align: center
   padding: 20px 10px 10px
   background-color: rgba(#ffffff, 0.5)
   border-radius: 15px
   margin-bottom: 40px
+  &-title
+    margin-bottom: 10px
   &-form
     margin-bottom: 15px
     width: 60%
@@ -46,22 +50,25 @@ p,h1,h2,h3,h4,h5,h6
       cursor: pointer
   &-card
     display: flex
-    justify-content: space-around
+    flex-wrap: wrap
     align-items: top
     margin-bottom: 20px
-    &__name
-      font-size: 18px
-      font-weight: 700
-      margin-bottom: 5px
-    &__class
-      font-weight: 400
+    &__info
+      flex-basis: 100%
+      display: flex
+      justify-content: space-around
+      align-items: top
+      margin-bottom: 20px
     &__img
       vertical-align: middle
       margin-right: 10px
-    &__points
-      font-weight: 700
-      &-descr
-        margin-bottom: 22px
+      max-height: 30px
+      max-width: 30px
+      margin-top: -6px
+    &__item
+      &-title
+        font-weight: 700
+        margin-bottom: 20px
   &-descr
     text-align: left
     font-size: 12px
@@ -81,7 +88,9 @@ p,h1,h2,h3,h4,h5,h6
       font-weight: 700
       color: black
 .debtors
-  padding: 20px 10px 10px
+  width: 80%
+  margin: 0 auto
+  padding: 20px 10px
   background-color: rgba(#ffffff, 0.5)
   border-radius: 15px
   &-title
@@ -90,7 +99,7 @@ p,h1,h2,h3,h4,h5,h6
   &-list
     display: flex
     flex-wrap: wrap
-    padding: 20px 85px
+    padding: 20px 60px
   &-card
     border: 1px solid #000000
     background-color: rgba(#000000, 0.2)
@@ -114,12 +123,18 @@ p,h1,h2,h3,h4,h5,h6
   @include color(red)
 
 @media ( max-width: 992px )
+  .hunters
+    width: 100%
   .debtors
+    width: 100%
     &-list
       justify-content: center
       padding: 20px 0
 
 @media ( max-width: 576px )
+  .hunters
+    &-form
+      width: 80%
   .debtors
     &-list
       padding: 20px 30px
@@ -127,13 +142,14 @@ p,h1,h2,h3,h4,h5,h6
   .hunters
     &-title
       font-size: 20px
+      margin-bottom: 40px
     &-form
-      width: 80%
       &__input
         font-size: 14px
     &-card
-      &__img
-        width: 25%
+      &__item
+        &-points
+          margin-bottom: 40px
     &-advice
       width: 100%
   .debtors
