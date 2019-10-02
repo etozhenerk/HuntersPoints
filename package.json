@@ -1,0 +1,20 @@
+{
+  "name": "HuntersPoints",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etozhenerk/HuntersPoints.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etozhenerk/HuntersPoints/issues"
+  },
+  "homepage": "https://github.com/etozhenerk/HuntersPoints#readme"
+}

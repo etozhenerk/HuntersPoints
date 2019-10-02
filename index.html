@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://kit.fontawesome.com/53aae75903.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic" rel="stylesheet">
-  <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="./css/animate.css">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./dist/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="./dist/css/animate.css">
+  <link rel="stylesheet" href="./dist/css/style.css">
   <title>Поинты Hunters</title>
 </head>
 
@@ -30,7 +30,7 @@
             <div class="hunters-card">
               <div class="hunters-card__text">
                 <p class="hunters-card__name wow" id="hunt-name">Ник игрока</p>
-                <p class="hunters-card__class"><img class="hunters-card__img" src="./img/class/0.png" alt=""><span id="hunt-class">Класс персонажа</span></p>
+                <p class="hunters-card__class"><img class="hunters-card__img" src="./dist/img/class/0.png" alt=""><span id="hunt-class">Класс персонажа</span></p>
               </div>
               <div class="hunters-card__points">
                   <p class="hunters-card__points-descr">Ваши поинты :</p>
@@ -46,10 +46,15 @@
           *Важен регистр и язык. Может найти по отдельным кусочкам ника
         </div>
       </div>
+      <div class="debtors">
+        <h2 class="debtors-title">Должники по поинтам</h2>
+        <div class="debtors-list">
+        </div>
+      </div>
     </div>
   </main>
-  <script src="./js/wow.min.js"></script>
-  <script src="./js/main.js"></script>
+  <script src="./src/js/wow.min.js"></script>
+  <script src="./src/js/main.js"></script>
   <script>
     new WOW().init();
   </script>
