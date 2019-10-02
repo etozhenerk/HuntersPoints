@@ -105,6 +105,7 @@ function getPoints(response) {
     });
   });
 
+  let d = 0.3;
   huntersPoints.forEach((member, i) => {
 
     let number = Number(member[2].replace(/\s/g, ""));
@@ -112,9 +113,9 @@ function getPoints(response) {
 
     if (number < -1) {
       const card = document.createElement("div");
-      card.className = "debtors-card";
+      card.className = `debtors-card wow fadeInUp`;
       card.innerHTML = `
-      <div class="debtors-card__name debtors-card__item">Ник: ${member[0]}</div>
+      <div class="debtors-card__name debtors-card__item wow">Ник: ${member[0]}</div>
             <div class="debtors-card__class debtors-card__item">Класс: ${member[1][0].toUpperCase() + member[1].slice(1)}</span></div>
             <div class="debtors-card__points debtors-card__item">Поинты: ${member[2]}</div>
             <div class="debtors-card__debt debtors-card__item">Задолжность:<br> ${debt
@@ -125,6 +126,8 @@ function getPoints(response) {
               )} юаней</div>
             `;
       debtors.appendChild(card);
+      card.setAttribute("data-wow-delay", `${d}s`);
+      d+=0.1;
     }
   });
 }
