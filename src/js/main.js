@@ -55,7 +55,7 @@ function getPoints(response) {
       }
     });
     if (member !== undefined) {
-      card.style.display = "";
+      card.style.display = "flex";
       animateCSS(card, "fadeInDown");
       huntName.textContent = member[0];
       classIcon.src = icons[member[1].replace(/\s/g, "")];
