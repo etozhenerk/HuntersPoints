@@ -1,9 +1,15 @@
 fetch(
   "https://sheets.googleapis.com/v4/spreadsheets/1sPa0L34LzYXX5i_qmIHw0WXMCkP-vfpHIRg1XbmhjG8/values/B:H?key=AIzaSyBcgKLrhDrhOC6Y0sZcDNuJ0ut_Sx_EkR8"
 )
-  .then(response => response.json())
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Данные не были получены , ошибка:" + response.status);
+    }
+  })
   .then(data => getPoints(data))
-  .catch(err => console.error(err));
+  .catch(err => console.warn(err));
 
 function getPoints(response) {
   const huntName = document.querySelector("#hunt-name"),
@@ -41,6 +47,8 @@ function getPoints(response) {
     }
   });
 
+  huntersPoints.sort();
+
   form.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -54,6 +62,7 @@ function getPoints(response) {
         return item;
       }
     });
+
     if (member !== undefined) {
       card.style.display = "flex";
       animateCSS(card, "fadeInDown");
@@ -97,11 +106,11 @@ function getPoints(response) {
     } else {
       card.style.display = "none";
       advice.style.display = "block";
-        advice.classList.remove("yellow");
-        advice.classList.remove("green");
-        advice.classList.add("red");
-        animateCSS(advice, "fadeInUp");
-        adviceText.innerHTML = `Вы ввели неверный ник`;
+      advice.classList.remove("yellow");
+      advice.classList.remove("green");
+      advice.classList.add("red");
+      animateCSS(advice, "fadeInUp");
+      adviceText.innerHTML = `Вы ввели неверный ник`;
     }
 
     animateCSS(huntName, "fadeInLeft");
