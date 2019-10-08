@@ -42,13 +42,12 @@ function getPoints(response) {
   };
 
   huntersList.forEach((item, i) => {
-    if (i > 1 && i < 211 && item.length !== 0) {
+    if (i > 1 && i < 211 && item.length !== 0 && item[2] !== "вышел" && item[2] !=="твинк") {
       huntersPoints.push([item[0], item[1], item[6]]);
     }
   });
 
   huntersPoints.sort();
-
   form.addEventListener("submit", e => {
     e.preventDefault();
 
